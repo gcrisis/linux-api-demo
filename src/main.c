@@ -7,6 +7,7 @@
 #include "std_io_demo.h"
 #include "signal_demo.h"
 #include "thread_demo.h"
+#include "socket_demo.h"
 
 
 char * main_content_str[]=
@@ -17,6 +18,7 @@ char * main_content_str[]=
 		"process control",
 		"signal",
 		"thread",
+		"socket",
 		NULL
 	};
 
@@ -34,6 +36,7 @@ CONTENT *std_io_content_handle(int index);
 CONTENT *process_control_content_handle(int index);
 CONTENT *signal_content_handle(int index);
 CONTENT *thread_content_handle(int index);
+CONTENT * socket_content_handle(int index);
 CONTENT *child_content_handle(int index);
 
 
@@ -47,7 +50,8 @@ CONTENT second_contents[] =
 		{standard_io_lib_str        ,&main_content,std_io_content_handle},
 		{process_control_str       	,&main_content,process_control_content_handle},
 		{signal_str                	,&main_content,signal_content_handle},
-		{thread_str       			,&main_content,thread_content_handle},		
+		{thread_str       			,&main_content,thread_content_handle},
+		{socket_str       			,&main_content,socket_content_handle},		
 	};
 	
 static void usage()
@@ -150,6 +154,14 @@ CONTENT * signal_content_handle(int index)
 CONTENT * thread_content_handle(int index)
 {
 	p = &thread_demo_list[index];
+	temp.str =  function_child_content;
+	temp.up = NULL;
+	temp.handle = third_content_handle;	
+	return &temp;
+}
+CONTENT * socket_content_handle(int index)
+{
+	p = &socket_demo_list[index];
 	temp.str =  function_child_content;
 	temp.up = NULL;
 	temp.handle = third_content_handle;	
