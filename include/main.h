@@ -1,5 +1,6 @@
 #ifndef __MAIN_H
 #define __MAIN_H
+//info for merge test
 
 #include "apue.h"
 
